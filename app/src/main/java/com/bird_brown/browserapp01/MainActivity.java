@@ -1,9 +1,11 @@
 package com.bird_brown.browserapp01;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -13,6 +15,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //ActionBarのオブジェクトを取得
+        //ActionBar actionBar = getActionBar();
+        ActionBar actionBar = getSupportActionBar();
+
+        //ActionBarにタイトルを設定
+        actionBar.setTitle("メインタイトル");
+        //setTitle("メインタイトル");
+
+        //ActionBarにサブタイトルを設定
+        actionBar.setSubtitle("サブタイトル");
 
         //WebViewのオブジェクトを取得
         webView = (WebView) findViewById(R.id.webView1);
@@ -57,5 +70,11 @@ public class MainActivity extends AppCompatActivity {
 
         //webViewをnullに設定
         webView = null;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.action_menu, menu);
+        return true;
     }
 }
